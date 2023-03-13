@@ -1,0 +1,58 @@
+Problem Description ::   https://leetcode.com/problems/two-sum/description/
+
+----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+  
+using namespace std;
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> output;
+
+     if(nums.empty())
+           return output;
+ 
+     for(int i =0,j=i+1;i<nums.size();i++,j=i+1)
+          while(j < nums.size())
+            {
+               if(nums[i]+nums[j] == target )
+               { 
+                  output.push_back(i);
+                  output.push_back(j);
+                  return output;
+               }
+               else
+               {
+                   j++;
+               }
+            }
+    return output;
+    }
+};
+-------------------------------------------------------------------------------------------------------------------
+Using a hash_map
+
+#include <iostream>
+#include <vector>
+  
+using namespace std;
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+    unordered_map<int, int> mp;
+        //1, 2,3, 4,5  target 9
+        for(int i = 0; i < nums.size(); i++){
+
+            if(mp.find(target - nums[i]) == mp.end())
+                mp[nums[i]] = i;
+            else
+                return {mp[target - nums[i]], i};
+        }
+ 
+        return {-1, -1};
+    }
+};
