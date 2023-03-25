@@ -1,0 +1,13 @@
+https://leetcode.com/problems/sqrtx/description/
+
+class Solution {
+public:
+    int mySqrt(int x) {
+        long long int y=1;  //important
+        while(y*y<=x)
+        {
+            y=y+1;
+        }
+        return y-1;
+    }
+};

@@ -1,0 +1,31 @@
+https://leetcode.com/problems/add-binary/description/
+
+class Solution {
+public:
+    string addBinary(string a, string b) {
+    
+    string ans; //taking a new string to store ans
+    int carry = 0;  //check if there is carry
+    int i = a.length() - 1; //update length lets say '1010' a = 4-1 ;a =3 ;because we use index that's why we are doing -1
+    int j = b.length() - 1; //update length lets say '10101' a = 5-1 ;a =4
+
+    while (i >= 0 || j >= 0 || carry)   //check if there is any bit or carry set 
+    {
+      if (i >= 0)
+        carry += a[i--] - '0';  
+        //carry = carry + a[3](Ascci  of char '1/0' is 49/48) -'0'(Ascci is 48),
+        //basically we are calculating carry here
+      if (j >= 0)
+        carry += b[j--] - '0';
+      //ans = ans + (carry % 2) + '0'   
+      ans += carry % 2 + '0';
+      //cout << carry%2 << endl;
+      //carry = carry/2;
+      carry /= 2;
+      //cout << carry/2 << endl;
+    }
+    //reverse the string using reverse api 
+    reverse(begin(ans), end(ans));
+    return ans;
+  }
+};
